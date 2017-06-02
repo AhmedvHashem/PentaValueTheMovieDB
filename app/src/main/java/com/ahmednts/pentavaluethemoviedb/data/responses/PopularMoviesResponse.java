@@ -13,4 +13,14 @@ public class PopularMoviesResponse {
     public int total_results;
 
     public List<PopularMovie> results;
+
+    @Override
+    public String toString() {
+        return "PopularMoviesResponse{" +
+                "page=" + page +
+                ", total_pages=" + total_pages +
+                ", total_results=" + total_results +
+                ", results=" + results +
+                '}';
+    }
 }

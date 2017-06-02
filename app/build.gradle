@@ -54,4 +54,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     apt 'com.google.dagger:dagger-compiler:2.8'
+
+    compile 'me.zhanghai.android.materialratingbar:library:1.0.2'
 }

@@ -1,5 +1,6 @@
 package com.ahmednts.pentavaluethemoviedb.data;
 
+import com.ahmednts.pentavaluethemoviedb.data.models.Movie;
 import com.ahmednts.pentavaluethemoviedb.data.responses.PopularMoviesResponse;
 
 import io.reactivex.Observable;
@@ -16,5 +17,5 @@ public interface ApiServices {
     Observable<PopularMoviesResponse> popularMovies(@Query("api_key") String apiKey);
 
     @GET("movie/{movieId}")
-    Observable<PopularMoviesResponse> movieDetails(@Path("movieId") String movieId);
+    Observable<Movie> movieDetails(@Path("movieId") int movieId, @Query("api_key") String apiKey);
 }

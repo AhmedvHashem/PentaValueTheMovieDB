@@ -19,4 +19,13 @@ public class PopularMovie {
     public String getPoster_path() {
         return poster_path;
     }
+
+    @Override
+    public String toString() {
+        return "PopularMovie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", poster_path='" + poster_path + '\'' +
+                '}';
+    }
 }

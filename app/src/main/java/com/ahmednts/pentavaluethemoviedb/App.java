@@ -5,8 +5,6 @@ import android.app.Application;
 import com.ahmednts.pentavaluethemoviedb.di.AppComponent;
 import com.ahmednts.pentavaluethemoviedb.di.AppModule;
 import com.ahmednts.pentavaluethemoviedb.di.DaggerAppComponent;
-import com.squareup.picasso.OkHttpDownloader;
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by AhmedNTS on 2016-12-11.

@@ -14,7 +14,7 @@
 
         <activity
             android:name=".movieslist.PopularMoviesActivity"
-            android:label=""
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,7 @@
         <activity
             android:name=".moviedetails.MovieDetailsActivity"
             android:label=""
-            android:parentActivityName=".movieslist.PopularMoviesActivity"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ahmednts.pentavaluethemoviedb.movieslist.PopularMoviesActivity" />
         </activity>
     </application>
 
