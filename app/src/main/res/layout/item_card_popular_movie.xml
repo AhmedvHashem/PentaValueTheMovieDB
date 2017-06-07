@@ -31,13 +31,13 @@
                 android:scaleType="centerCrop" />
         </FrameLayout>
 
-
         <TextView
             android:id="@+id/movieName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="center"
+            android:textColor="#262626"
             android:padding="8dp"
             android:text="Movie Name"
             android:textSize="13sp" />
