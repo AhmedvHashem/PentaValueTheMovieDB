@@ -13,10 +13,24 @@
         android:background="?selectableItemBackground"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/moviePoster"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/moviePoster"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop" />
+        </FrameLayout>
+
 
         <TextView
             android:id="@+id/movieName"

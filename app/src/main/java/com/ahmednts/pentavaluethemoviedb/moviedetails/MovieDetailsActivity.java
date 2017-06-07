@@ -2,6 +2,8 @@ package com.ahmednts.pentavaluethemoviedb.moviedetails;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +18,10 @@ import com.ahmednts.pentavaluethemoviedb.R;
 import com.ahmednts.pentavaluethemoviedb.data.ApiClient;
 import com.ahmednts.pentavaluethemoviedb.data.models.Movie;
 import com.ahmednts.pentavaluethemoviedb.utils.UIUtils;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import javax.inject.Inject;
 
@@ -29,9 +34,9 @@ public class MovieDetailsActivity extends AppCompatActivity implements View {
 
     private Presenter movieDetailsPresenter;
 
-    private TextView toolbarTitle;
+//    private TextView toolbarTitle;
 
-    private ProgressBar progressBar;
+    private ProgressBar progressBar,imageProgressBar;
     private android.view.View movieDetails;
     private TextView movieName;
     private ImageView moviePoster;
@@ -76,11 +81,13 @@ public class MovieDetailsActivity extends AppCompatActivity implements View {
             actionBar.setTitle("");
         }
 
-        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("");
+//        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+//        toolbarTitle.setText("");
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         UIUtils.setProgressBarColor(this, progressBar, R.color.colorAccent);
+        imageProgressBar = (ProgressBar) findViewById(R.id.imageProgressBar);
+        UIUtils.setProgressBarColor(this, imageProgressBar, R.color.colorAccent);
         movieDetails = findViewById(R.id.movieDetails);
         movieName = (TextView) findViewById(R.id.movieName);
         moviePoster = (ImageView) findViewById(R.id.moviePoster);
@@ -109,15 +116,31 @@ public class MovieDetailsActivity extends AppCompatActivity implements View {
 
     @Override
     public void showMovieDetails(Movie movie) {
-        toolbarTitle.setText(movie.getOriginalTitle());
+        getSupportActionBar().setTitle(movie.getOriginalTitle());
         movieName.setText(movie.getOriginalTitle());
 
         Picasso.with(this).load(App.IMAGES_BASE_URL + movie.getPosterImage())
-                .placeholder(R.drawable.icon)
+                .placeholder(R.drawable.dr_loading)
                 .error(R.drawable.icon)
-                .fit()
-                .centerInside()
-                .into(moviePoster);
+                .into(new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        imageProgressBar.setVisibility(android.view.View.GONE);
+                        moviePoster.setVisibility(android.view.View.VISIBLE);
+                        moviePoster.setImageBitmap(bitmap);
+                    }
+
+                    @Override
+                    public void onBitmapFailed(Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+                        imageProgressBar.setVisibility(android.view.View.VISIBLE);
+                        moviePoster.setVisibility(android.view.View.INVISIBLE);
+                    }
+                });
 
         String releaseDate = "Release Date: " + movie.getReleaseDate();
         movieReleaseDate.setText(releaseDate);

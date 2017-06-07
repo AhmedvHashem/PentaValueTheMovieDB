@@ -12,8 +12,8 @@ import com.ahmednts.pentavaluethemoviedb.utils.Logger;
 public class PopularMoviesPresenter implements Presenter {
     private static final String TAG = PopularMoviesPresenter.class.getSimpleName();
 
-    private final View mPopularMoviesView;
     private final ApiClient mApiClient;
+    private final View mPopularMoviesView;
 
     public PopularMoviesPresenter(@NonNull View popularMoviesView, @NonNull ApiClient apiClient) {
         mPopularMoviesView = popularMoviesView;

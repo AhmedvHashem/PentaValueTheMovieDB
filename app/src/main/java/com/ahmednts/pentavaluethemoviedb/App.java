@@ -27,6 +27,11 @@ public class App extends Application {
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
+
+//        Downloader downloader = new OkHttpDownloader(getApplicationContext(), Integer.MAX_VALUE);
+//        Picasso.Builder builder = new Picasso.Builder(getApplicationContext());
+//        builder.downloader(downloader);
+//        Picasso.setSingletonInstance(builder.build());
     }
 
     public static App getInstance() {

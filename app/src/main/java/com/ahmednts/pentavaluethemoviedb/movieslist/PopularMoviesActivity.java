@@ -41,6 +41,7 @@ public class PopularMoviesActivity extends AppCompatActivity implements View, Po
         initUI();
 
         popularMoviesPresenter = new PopularMoviesPresenter(this, apiClient);
+        popularMoviesPresenter.loadPopularMovies();
     }
 
     void initUI() {
@@ -61,13 +62,6 @@ public class PopularMoviesActivity extends AppCompatActivity implements View, Po
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        popularMoviesPresenter.loadPopularMovies();
     }
 
     @Override
